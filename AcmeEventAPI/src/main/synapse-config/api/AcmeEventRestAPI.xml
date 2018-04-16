@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/acme" name="AcmeEventRestAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/event/create">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to AcmeService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="AcmeEvent_CreateEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/event/delete/{id}">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to AcmeService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="AcmeEvent_DeleteEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/event/{id}">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to AcmeService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="AcmeEvent_GetEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/events">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to AcmeService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="AcmeEvents_GetEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/event/update">
+        <inSequence>
+            <log description="Request Log" level="custom">
+                <property name="message" value="&quot;Welcome to AcmeService&quot;"/>
+            </log>
+            <send>
+                <endpoint key="AcmeEvent_UpdateEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,9 @@
+client:
+  event:
+    address: http://localhost:9090/acme/event
+
+server:
+  port: 9090
+
+cxf:
+  path: /acme

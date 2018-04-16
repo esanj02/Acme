@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxy name="AcmeEventProxy" startOnLoad="true" transports="http https" xmlns="http://ws.apache.org/ns/synapse">
+    <target>
+        <inSequence>
+            <log description="Request Log" level="custom"/>
+            <send>
+                <endpoint key="AcmeEventProxyEP"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <log description="Response Log" level="custom"/>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </target>
+</proxy>

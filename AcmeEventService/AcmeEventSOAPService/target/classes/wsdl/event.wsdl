@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions name="AcmeEvent" targetNamespace="http://acme.com/services/event"
+	xmlns:tns="http://acme.com/services/event" xmlns:types="http://acme.com/types/event"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+	<wsdl:types>
+		<xsd:schema targetNamespace="http://acme.com/types/event"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+			attributeFormDefault="unqualified" version="1.0">
+			<xsd:element name="event">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="type" type="xsd:string"  />
+					</xsd:sequence>
+					<xsd:attribute name="id" maxOccurs="1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:long">
+								<xsd:minInclusive value="100" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:attribute>
+					<xsd:attribute name="timestamp" base="xsd:dateTime" maxOccurs="1" />
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="ProcessRequest">
+		<wsdl:part name="event" element="types:event" />
+	</wsdl:message>
+
+	<wsdl:message name="ProcessResponse">
+		<wsdl:part name="event" element="types:event" />
+	</wsdl:message>
+
+	<wsdl:portType name="Event_PortType">
+		<wsdl:operation name="process">
+			<wsdl:input message="tns:ProcessRequest"></wsdl:input>
+			<wsdl:output message="tns:ProcessResponse"></wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="Event_SoapBinding" type="tns:Event_PortType">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="process">
+			<soap:operation soapAction="http://acme.com/services/event/process" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="Event_Service">
+		<wsdl:documentation>Acme Event service</wsdl:documentation>
+		<wsdl:port name="Event_Port" binding="tns:Event_SoapBinding">
+			<soap:address location="http://localhost:9090/acme/event" />
+		</wsdl:port>
+	</wsdl:service>
+
+</wsdl:definitions>

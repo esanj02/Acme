@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="AcmeEvent_UpdateEP" xmlns="http://ws.apache.org/ns/synapse">
+    <http method="put" uri-template="http://localhost:9090/acme/event/update"/>
+</endpoint>

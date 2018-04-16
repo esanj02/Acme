@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="AcmeEvent_ProxyEP" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="http://localhost:9000/acme/service">
+        <timeout>
+            <duration>10000</duration>
+            <responseAction>fault</responseAction>
+        </timeout>
+    </address>
+</endpoint>
